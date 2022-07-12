@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web-size check</title>
+
+    <!-- 간단한 js나 css는 별도의 파일을 만들어 주지 않는게 좋습니다. -->
+    <!-- <script src="web-size.js" defer></script> -->
+
+    <style>
+        .tag {
+            background-color: blue;
+            color: white;
+            display: inline-block;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 목표 : 웹 브라우저 크기가 변함에 따라 window 사이즈 값을 동적으로 표현하기 -->
+    <div class="tag">여기에 브라우저에 대한 사이즈 값이 들어갑니다.</div>
+
+    <!-- 동적인 값을 표현하기 위해서 JS를 사용합니다. -->
+    <script>
+        // HTML안 'tag'태그에 값을 넣기 위해 DOM객채를 이용하여 해당 태그를 연결합니다.
+        // (HTML을 사용하려면 DOM객체를 이용한다!!)
+        const tag = document.querySelector('.tag');
+
+        //페이지가 처음 로드 시에도 브라우저에 대한 사이즈 값을 보여주기려면? -> tag.innerHTML이 되어야함
+        // 반복해서 쓰이는 코드는 함수로 이용한다.!!
+        function updateSize() {
+            tag.innerHTML = `
+            window.screen:${window.screen.width}, ${window.screen.height} </br>
+            window.outer : ${window.outerWidth}, ${window.outerHeight} </br>
+            window.inner : ${window.innerWidth}, ${window.innerHeight} </br>
+            documentElement.clientWidth: ${document.documentElement.clientWidth}, ${document.documentElement.clientHeight}
+            `;
+        };
+
+        // 브라우저에 대한 정보는 윈도우객체에 있습니다.
+        // (브라우저의 구조는 윈도우객체로 이루어져있다!!!)
+        // resize는 브라우저 창을 조절할때에 대한 이벤트입니다.
+        window.addEventListener('resize', ()=>{
+            updateSize();
+        });
+        updateSize();
+    </script>
+
+    
+    
+</body>
+</html>
