@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Window Scrolling</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        div:not(.buttons){
+            background-color: antiquewhite;
+            width: 200px;
+            height: 200px;
+            margin-bottom: 20px;
+        }
+
+        /* div요소들 중 3번째 요소를 선택  */
+        div:nth-child(3){
+            background-color: red;
+        }
+
+        #special {
+            background-color: aqua;
+        }
+        .buttons{
+            position: fixed;
+            top: 10px;
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="buttons">
+        <!-- 100px씩 아래로 스크롤 -->
+        <button class="scrollBy" data-value='by'>Scroll by 100px(y)</button>
+
+        <!-- 100px으로 스크롤 -->
+        <button class="scrollTo" data-value='to'>Scroll to 100px(y)</button>
+
+        <!-- special로 스크롤-->
+        <button class="scrollInto" data-value='into'>Scroll into special</button>
+    </div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div id = "special"></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    
+    <script>
+        const scrollBy = document.querySelector(".scrollBy");
+        const scrollTo = document.querySelector(".scrollTo");
+        const scrollInto = document.querySelector(".scrollInto");
+
+        //1.  위 처럼 버튼 하나하나 쿼리셀렉터를 해주지 않고 버튼들을 감싸고 있는 영역을 불러와 evet.target을 활용하면 안되나? -> 했음 (대신 빈 영역을 누를때 나오는 undefined값 처리를 해야함)
+
+        // 2. 각 버튼에 해당하는 함수를 호출하도록 하기
+        // 100px씩 아래로(y) 스크롤
+        let currentY = 0;
+        function scrollBy100px(){
+            /*
+            브라우저를 스크롤하기 위해서 윈도우 객체를 이용하여 scrollTo 메서드를 사용한다(이것두 api인가?)
+            window.scrollTo(0,100); <- 이렇게 하면 page 기준에서 100px에 위치한 곳에 간다.
+            */
+            const body = document.querySelector("body");
+            let br = body.getBoundingClientRect();
+            currentY = br.y;
+            currentY -= 100;
+            window.scrollTo(0,-(currentY));
+            // 만일 스크롤이 맨 아래있다면 다시 맨 위로 가야하는 거 아님? 그럼 맨 아래의 위치는 어떻게 알어?
+
+            // 구현 성공
+            // 방법 : body태그의 DOMRect를 알아내어 스크롤을 할때마다 y값의 변화를 이용
+            
+            
+        }
+
+        // page에서 100px 위치로 이동
+        function scrollTo100px(){
+            window.scrollTo(0,100);
+             // 스무스 하게 하는 방법은? bottom : 100은 아니자나..
+        }
+        
+        function scrollIntoSpecial(){
+            const special = document.querySelector('#special');
+
+            let specialDomRect = special.getBoundingClientRect();
+            console.log(specialDomRect);
+            let specialDomRectY = specialDomRect.y;
+            window.scrollTo(0,specialDomRectY);
+            // 요상 망측하게 결과 값이 도출됨
+            //  문제 처음에는 special요소로 이동하는데 한번더 누르면 페이지의 상위로 스크롤이 이동 
+            // 왜??!?!?!?
+        }
+
+        
+
+        const bottons = document.querySelector(".buttons");
+
+        let buttonValue;
+        bottons.addEventListener('click', (event)=>{
+            buttonValue = event.target.dataset.value;
+            console.log(`clikc : ${buttonValue}`);
+            if(buttonValue=="by"){
+                scrollBy100px();
+            }else if(buttonValue=="to"){
+                scrollTo100px();
+            }else if(buttonValue=="into"){
+                scrollIntoSpecial();
+            }else{
+                return;
+            }
+        })
+
+        
+
+    </script>
+</body>
+</html>
