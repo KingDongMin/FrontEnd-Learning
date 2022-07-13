@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>coordinates</title>
+    <style>
+        ul{
+            list-style: none;
+            background-color: black;
+        }
+        li{
+            width: 200px;
+            height: 200px;
+            background-color: antiquewhite;
+            margin : 10px;
+        }
+        .it{
+            background-color: palevioletred;
+        }
+    </style>
+</head>
+<body>
+    <!-- client 와 page 관점?에서 요소의 위치값의 차이를 비교해 보기 -->
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li class = "it" ></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script>
+        
+        function clientCoordinate(event){
+            console.log(`client : ${event.clientX}, ${event.clientY}`);
+        }
+        function pageCoordinate(event){
+            console.log(`page : ${event.pageX}, ${event.pageY}`);
+        }
+
+
+        let element = document.querySelector('.it');
+        console.log(element.getBoundingClientRect());
+        
+
+        document.addEventListener('click', (event) => {
+
+            clientCoordinate(event);
+            pageCoordinate(event);
+        })
+        
+    </script>
+</body>
+</html>
