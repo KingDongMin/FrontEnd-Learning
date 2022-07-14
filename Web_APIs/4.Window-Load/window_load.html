@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Window Load</title>
+
+    <!-- js 파일을 연결 : load 속성은 defer -->
+    <script src="test.js" defer></script>
+    <!--
+        defer : 연기하다.
+        defer 속성을 쓴다면 HTML이나 리소스들(이미지파일, css파일)이 다 불러와지기(load)전에 먼저 JS파일을 Load되게 하는 속성이다.
+    -->
+
+</head>
+<body>
+    <script>
+        // DOMContentLoaded이벤트는 말 그대로 DOM콘텐츠(HTML)이 다 읽어지면 발생하는 이벤트이다.
+        window.addEventListener('DOMContentLoaded',()=>{
+            console.log('DOMContentLoaded');
+        })
+
+        
+        // load이벤트는 페이지의 리소스(이미지, css파일 등)이 다 load가 되었을때 발생하는 이벤트이다.
+        window.addEventListener('load', ()=>{
+            console.log('load');
+            /*
+            이 부분이 콜백함수인 이유는 load라는 이벤트가 발생 후 끝이나면 시스템에서 호출(callback)되는 함수이기 때문이다.
+            */
+        })
+
+        // 브라우저가 나가지기 전에(before) 실행되는 이벤트 (새로고침 계속눌러보면 확인 가능)
+        window.addEventListener('beforeunload', ()=>{
+            console.log('beforeunload');
+        })
+
+        window.addEventListener('unload', ()=>{
+            console.log('unload');
+        })
+    </script>
+    
+</body>
+</html>

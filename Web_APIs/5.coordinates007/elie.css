@@ -1,0 +1,38 @@
+body {
+  background-color: black;
+}
+
+.line {
+  position: absolute;
+  background-color: antiquewhite;
+}
+
+.horizontal {
+  width: 100%;
+  height: 1px;
+  top: 50%;
+}
+
+.vertical {
+  height: 100%;
+  width: 1px;
+  left: 50%;
+}
+
+.target {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* translate은 요소의 기준으로 움직이니까!! */
+  transform: translate(-50%, -50%);
+  /* 타겟이미지의 위치를 중간으로 오게함 */
+}
+
+.tag {
+  color: antiquewhite;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 38px;
+  transform: translate(20px, 20px);
+}
