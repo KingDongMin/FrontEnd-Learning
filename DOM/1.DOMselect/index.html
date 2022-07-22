@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM select</title>
+    <style>
+        html {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        body {
+            background-color: black;
+            text-align: center;
+        }
+
+        section {
+            will-change: opacity;
+            width: 50%;
+            margin: 50px auto;
+            background-color: brown;
+            border-radius: 20px;
+            padding: 20px;
+        }
+
+        img {
+            will-change: opacity;
+        }
+
+        h1,
+        h3,
+        span {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <img src="/imgs/Web_APIs_imgs/carrot.png" alt="avatar" />
+        <h1 id="brand">Kim dong min</h1>
+        <h3>kim dong min is ring ding dong min</h3>
+    </section>
+    <span>Hello World!</span>
+    <script>
+        const section = document.querySelector("section");
+        const h2 = document.createElement("h2");
+        h2.setAttribute("class", "title"); // <h2 class = "title"><h2>
+        h2.textContent = 'This is title';
+        // <h2 class = "title">This is title<h2>
+
+        //해당 섹션에 추가하기 -> 맨 마지막 요소에 추가됨
+        section.appendChild(h2);
+
+        // h2를 h3전에 추가하기 : insertBefore
+        const h3 = document.querySelector('h3');
+        section.insertBefore(h2, h3);
+
+    </script>
+</body>
+
+</html>
