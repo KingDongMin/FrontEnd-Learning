@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>elie shopping list</title>
+    <script src="elieJs.js" defer></script>
+    <link rel="stylesheet" href="elieStyle.css">
+    <script src="https://kit.fontawesome.com/b5752dc2de.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <section class="list">
+
+        <header class="header">Shopping list</header>
+        <ul class="items">
+            <li class="item__row">
+                <div class="item">
+                    <span class="item__name">오렌지</span>
+                    <button class="item__delete">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                </div>
+                <div class="item__divider"></div>
+            </li>
+        </ul>
+        <footer class="footer">
+            <input type="text" class="footer__input" />
+            <button class="footer__button">
+                <i class="fa-solid fa-plus"></i>
+            </button>
+        </footer>
+    </section>
+</body>
+
+</html>
+<!--
+명심 해야 할것
+- 태그의 선택자에 id,class를 명시할 것 -> BEM!!!
+- 시멘틱태그를 잘 사용할 것
+
+궁금한 점
+- button태그를 쓰고 안쓰고 차이는 뭘까?
+- ul안에 li안에 굳이 div태그로 묶어준 이유는?
+-->

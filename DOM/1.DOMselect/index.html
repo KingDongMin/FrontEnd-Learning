@@ -58,6 +58,19 @@
         const h3 = document.querySelector('h3');
         section.insertBefore(h2, h3);
 
+        // h2 지우기
+        section.removeChild(h2);
+
+        // // innerHTML
+        section.innerHTML = `
+            <img src="/imgs/Web_APIs_imgs/rabbit.png"" alt="avatar" />
+            <h1 id="brand">Kim kim kim</h1>
+            <h3>my name is kimkimkim</h3>
+            <p>innerHTML을 사용하면 해당 DOM요소에 새로운 HTML을 작성할 수 있습니다.</p>
+        `;
+
+
+
     </script>
 </body>
 

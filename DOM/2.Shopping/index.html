@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shopping List</title>
+    <script src="https://kit.fontawesome.com/b5752dc2de.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js" defer></script>
+</head>
+
+<body>
+    <section id="list">
+        <h2 class="list_title">Shopping List</h2>
+        <ul class="list_main">
+            <li>
+                <p>우유</p>
+                <i class="fa-solid fa-trash-can removeBtn"></i>
+            </li>
+            <li>
+                <p>사과</p>
+                <i class="fa-solid fa-trash-can removeBtn"></i>
+            </li>
+        </ul>
+        <input type="text" id="item" name="item" onkeypress="inputEnter(event)">
+        <i class="fa-solid fa-circle-plus plusBtn"></i>
+    </section>
+</body>
+
+</html>
+
+<!-- 
+    - 여기서 콘텐츠는 블록레벨의 p태그보단 인라인인 span이 더 낫다. 왜?
+    - 시멘틱 태그를 최대한 사용하는 것이 좋다
+    - 각 태그에 선택자를 넣어 무엇인지 확실히 명시하는게 좋다(BEM)
+-->
