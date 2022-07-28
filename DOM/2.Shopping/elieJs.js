@@ -52,7 +52,7 @@ function creatItem(text){
 }
 
 input.addEventListener('keypress', (event)=>{
-    if(event.keyCode == 13){
+    if(event.key === 'Enter'){
         onAdd();
     }
 })
