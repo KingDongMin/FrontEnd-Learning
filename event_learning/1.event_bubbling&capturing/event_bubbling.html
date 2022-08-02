@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .outer {
+            background-color: yellow;
+            width: 500px;
+            height: 500px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .middle {
+            background-color: blueviolet;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 계층적 구조 -->
+    <div class="outer">
+        <div class="middle">
+            <button>Click Me</button>
+        </div>
+    </div>
+
+    <div class="div1">
+        <div class="div2">
+            <div class="div3">
+                <div class="div4">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const outer = document.querySelector(".outer");
+        const middle = document.querySelector('.middle');
+        const btn = document.querySelector('button');
+
+        outer.addEventListener('click', (event) => {
+            console.log(`outer -> event.target : ${event.target.className}, event.currentTarget : ${event.currentTarget.className}`);
+            console.log('--------\n');
+        })
+        middle.addEventListener('click', () => {
+            console.log(`middle -> event.target : ${event.target.className}, event.currentTarget : ${event.currentTarget.className}`);
+
+        })
+        btn.addEventListener('click', () => { });
+
+
+    </script>
+</body>
+
+</html>

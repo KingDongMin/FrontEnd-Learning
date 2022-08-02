@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .outer {
+            background-color: yellow;
+            width: 500px;
+            height: 500px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .middle {
+            background-color: blueviolet;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <div class="middle">
+            <button>Click Me</button>
+        </div>
+    </div>
+    <script>
+        const outer = document.querySelector(".outer");
+        const middle = document.querySelector('.middle');
+        const btn = document.querySelector('button');
+
+        outer.addEventListener('click', (event) => {
+            if (event.target !== event.currentTarget) {
+                return;
+            }
+            console.log(`outer ${event.currentTarget}, ${event.target}`);
+        });
+        middle.addEventListener('click', () => {
+            if (event.target !== event.currentTarget) {
+                return;
+            }
+            console.log(`middle ${event.currentTarget}, ${event.target}`);
+        });
+        btn.addEventListener('click', () => {
+            if (event.target !== event.currentTarget) {
+                return;
+            }
+            console.log(`button1 ${event.currentTarget}, ${event.target}`);
+            //event.stopPropagation(); // 버블링 중지?
+            //event.stopImmediatePropagation();//해당 이벤트만 핸들링
+        });
+        btn.addEventListener('click', (event) => {
+            if (event.target !== event.currentTarget) {
+                return;
+            }
+            console.log(`button2 ${event.currentTarget}, ${event.target}`);
+            //event.stopImmediatePropagation();
+        });
+        btn.addEventListener('click', () => {
+            console.log(`button3 ${event.currentTarget}, ${event.target}`);
+
+        });
+        // capturing & bubbling
+    </script>
+</body>
+
+</html>

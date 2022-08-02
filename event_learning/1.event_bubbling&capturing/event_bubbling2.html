@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .div1 {
+
+            background-color: rgb(252, 64, 64);
+            width: 500px;
+            height: 500px;
+
+        }
+
+        .div2 {
+            background-color: rgb(252, 149, 64);
+            width: 400px;
+            height: 400px;
+            transform: translate(10%, 10%);
+        }
+
+        .div3 {
+            background-color: rgb(84, 251, 54);
+            width: 300px;
+            height: 300px;
+            transform: translate(10%, 10%);
+        }
+
+        .div4 {
+            background-color: rgb(70, 64, 250);
+            width: 200px;
+            height: 200px;
+            transform: translate(10%, 10%);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Bubbling</h1>
+    <div class="a div1">div1
+        <div class="a div2">div2
+            <div class="a div3">div3
+                <div class="a div4">div4
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <h1>Capturing</h1>
+    <div class="b div1">div1
+        <div class="b div2">div2
+            <div class="b div3">div3
+                <div class="b div4">div4
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 계층적인 DOM요소를 모두 골라 각 요소에 click이벤트를 할당하였습니다.
+        const Adivs = document.querySelectorAll('.a');
+        Adivs.forEach(div => {
+            div.addEventListener('click', (event) => {
+                console.log(`\n event.target : ${event.target.className}\n event.currentTarget : ${event.currentTarget.className}`);
+            })
+        })
+
+        const Bdivs = document.querySelectorAll('.b');
+        const clickEvent = () => {
+            console.log(`\n event.target : ${event.target.className}\n event.currentTarget : ${event.currentTarget.className}`);
+        }
+        Bdivs.forEach(div => {
+            div.addEventListener('click', clickEvent, { capture: true });
+        })
+
+    </script>
+</body>
+
+</html>
