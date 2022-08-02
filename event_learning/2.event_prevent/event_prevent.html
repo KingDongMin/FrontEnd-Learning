@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            margin-top: 10px;
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <P>체크박스1 <input type="checkBox" class="checkBox1"></P>
+        <p>체크박스2 <input type="checkBox" class="checkBox2"></p>
+        <p>체크박스3 <input type="checkBox" class="checkBox3"></p>
+    </div>
+    <div>
+        <p>Passive<input type="checkBox" class="passive"></p>
+    </div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <script>
+        const checkBox1 = document.querySelector('.checkBox1');
+        const checkBox2 = document.querySelector('.checkBox2');
+        const checkBox3 = document.querySelector('.checkBox3');
+        checkBox1.addEventListener('click', () => {
+            console.log('\n checkBox1 click!!');
+        })
+        checkBox2.addEventListener('click', () => {
+            if (checkBox1.checked == true) {
+                event.preventDefault();
+                console.log('\n  checkBox2를 체크하려면 checkBox1을 해제해주세요.')
+            } else {
+                console.log('checkBox2 click!!');
+            }
+        })
+        checkBox3.addEventListener('click', () => {
+            if (checkBox1.checked == true) {
+                event.preventDefault();
+                console.log('\n checkBox3를 체크하려면  checkBox1을 해제해 주세요.')
+            } else {
+                console.log('checkBox3 click!!');
+            }
+        }, { passive: true })
+
+        // wheel event handling
+        const passive = document.querySelector('.passive');
+
+        function scroll(event) {
+            event.preventDefault();
+            console.log("scroll!");
+        }
+        document.addEventListener('wheel', scroll);
+
+        passive.addEventListener('click', () => {
+            if (passive.checked == true) {
+                console.log('passive : true');
+                document.removeEventListener('wheel', scroll);
+                document.addEventListener('wheel', scroll, { passive: false });
+            } else {
+                console.log('passive : flase');
+                document.removeEventListener('wheel', scroll, { passive: false });
+                document.addEventListener('wheel', scroll);
+            }
+        });
+
+
+
+
+    </script>
+</body>
+
+
+</html>

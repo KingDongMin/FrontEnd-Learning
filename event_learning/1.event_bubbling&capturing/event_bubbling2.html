@@ -61,6 +61,8 @@
 
     <script>
         // 계층적인 DOM요소를 모두 골라 각 요소에 click이벤트를 할당하였습니다.
+
+        // bubbling
         const Adivs = document.querySelectorAll('.a');
         Adivs.forEach(div => {
             div.addEventListener('click', (event) => {
@@ -68,6 +70,7 @@
             })
         })
 
+        // capturing
         const Bdivs = document.querySelectorAll('.b');
         const clickEvent = () => {
             console.log(`\n event.target : ${event.target.className}\n event.currentTarget : ${event.currentTarget.className}`);
