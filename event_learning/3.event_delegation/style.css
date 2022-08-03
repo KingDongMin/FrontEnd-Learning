@@ -1,0 +1,96 @@
+*{
+    box-sizing: border-box;
+}
+
+ul{
+    padding:0;
+    list-style: none;
+}
+
+button {
+    outline: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+body{
+    background-color: rgb(216, 234, 250);
+    text-align: center;
+}
+
+.list {
+    width: 400px;
+    margin: auto;
+    /* 블럭레벨은 마진이 오른쪽에만 들어간다 -> 마진을 오토로 해준다 */
+    background-color: rgb(217, 248, 252);
+    border-radius: 20px;
+}
+
+.header {
+    height: 48px;
+    padding: 8px;
+    font-size: 24px;
+    /* cssgradient 사이트를 이용할 수 있다. */
+    background: rgb(136,173,251);
+    background: linear-gradient(347deg, rgba(136,173,251,1) 22%, rgba(255,167,170,1) 47%, rgba(101,223,247,1) 71%);
+    border-radius: 20px 20px 0px 0px;
+    color: white;
+}
+
+.items {
+    height: 500px;
+    /* 아이템이 많아지면 자동으로 스크롤바가 생김 */
+    overflow-y: auto;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 32px;
+}
+.item__delete{
+    font-size: 16px;
+    transition: all 300ms ease-in;
+}
+.item__delete:hover{
+    color:red;
+    transform: scale(1.1);
+}
+
+.item__divider {
+    width: 90%;
+    height: 1px;
+    background-color: lightgray;
+    margin: auto;
+}
+
+.footer {
+    background: rgb(136,173,251);
+    background: linear-gradient(347deg, rgba(136,173,251,1) 22%, rgba(255,167,170,1) 47%, rgba(101,223,247,1) 71%);
+    border-radius: 0px 0px 20px 20px;
+}
+
+.footer__input{
+    width: 100%;
+    height: 32px;
+    border: none;
+    /* 인풋창이 클릭될때 아웃라인을 없앤다 */
+    outline: none;
+    font-size: 24px;
+    padding: 0 16px;
+}
+
+.footer__button{
+    width: 48px;
+    height: 48px;
+    font-size: 28px;
+    background-color: black;
+    color: white;
+    transition: transform 300ms ease-in;
+    border-radius: 50%;
+}
+
+.footer__button:hover{
+    transform: scale(1.1);
+}
