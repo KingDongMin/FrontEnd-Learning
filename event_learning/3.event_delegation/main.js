@@ -79,12 +79,41 @@ items.addEventListener('click', event=>{
 })
 
 
-input.addEventListener('keypress', (event)=>{
-    if(event.key === 'Enter'){
-        onAdd();
-    }
-})
+//실습 10: keyUp & keyDown
+//keypress = keydown = keyup
 
-addBtn.addEventListener('click', ()=>{
+// 기존 keypress 이벤트
+// input.addEventListener('keypress', (event)=>{
+//     if(event.key === 'Enter'){
+//         onAdd();
+//     }
+// })
+
+// iscomposing은 입력이벤트가 다 끝났는지 확인하는 것 -> 두번 입력되는거 막기?
+// input.addEventListener('keydown', (event)=>{
+//     if(event.isComposing){
+//         return;
+//     }
+//     if(event.key === 'Enter'){
+//         onAdd();
+//     }
+// })
+
+
+// 실습11 : form태그
+
+// input.addEventListener('keyup', (event)=>{
+//     if(event.key === 'Enter'){
+//         onAdd();
+//     }
+// })
+
+// addBtn.addEventListener('click', ()=>{
+//     onAdd();
+// })
+
+const footer__form = document.querySelector('.footer__form');
+footer__form.addEventListener('submit', event=>{
+    event.preventDefault();
     onAdd();
 })
