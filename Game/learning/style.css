@@ -1,0 +1,132 @@
+/* 크기나 컬러는 변수를 이용할것? */
+*{
+    margin: 0;;
+}
+body{
+    /* 상위요소가 flex일때 하위요소는 반응형으로 변한다. 왜일까? flex가 뭐길래 */
+    /* display: flex; */
+    text-align: center;
+    /* 그냥 text-align을 center로 하면 하위 요소가 가운데 정렬되지 않는다
+    왜냐 margin때문에 그래서 가운데 정렬할 하위 요소들의 margin을 auto로 주어야 한다. / 왜 margin때문에 상위 text-align이 안먹을까? */
+
+    background-color: black;
+}
+.button{
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+
+
+.game{
+    /* 왜 flex와 flex -> coulumn으로 하면 넘어가지 않는가? */
+    display: flex;
+    flex-direction: column;
+    width: 800px;
+    height: 500px;
+    margin: auto;
+    background: url(../img/background.png) center/cover;
+    border-radius: 20px;
+}
+
+.game__header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.game__button{
+    width: 60px;
+    height: 60px;
+    background-color: wheat;
+    border: 4px solid black;
+    font-size: 24px;
+    transition: transform 300ms ease-in;
+}
+
+/* 가상클래스 hover / 가상클래스란?  */
+.game__button:hover{
+    transform:scale(1.1);
+}
+
+.game__timer{
+    width:100px;
+    background-color: white;
+    text-align:center;
+    border:5px solid black;
+    font-size: 32px;
+    margin-top:8px;
+    border-radius: 20px;
+    /* rander tree의 영향을 받아 없어져도 사이즈에 영향을 안받게 하기 위해서 display : none대신에 visibility : hidden을 쓴다. */
+    visibility: hidden;
+    /* 선택되지 않게 하기 위함? 드래그? */
+    user-select: none;
+    cursor: auto;
+}
+
+.game__score{
+    text-align: center;
+    margin-top: 8px;
+    width:50px;
+    height: 50px;
+    font-size: 38px;
+    border-radius: 50%;
+    border: 3px solid black;
+    background-color: darksalmon;
+    color:white;
+    visibility: hidden;
+    user-select: none;
+    cursor: auto;
+}
+
+
+.game__field{
+    width: 100%;
+    /* dispaly가 flex가 아니면 height가 100%일때 game영역을 넘어간다 */
+    height: 100%;
+    margin-top: 40px;
+    /* item(당근,벌래)를 absolute로 추가하기 위해서 relative*/
+    position: relative;
+}
+
+.pop-up{
+    display: block;
+    width: 400px;
+    height: 140px;
+    padding: 20px;
+    border-radius: 20px;
+    margin: auto;
+    background-color: #00000090;
+    color: white;
+    text-align: center;
+    transform: translateY(-150%);
+}
+/* 왜 따로 클래스를 지정해줘서 display를 선언하는가?
+그냥 pop-up에 display none해주면 되는거 아닌가? */
+.pop-up--hide{
+    display: none;
+}
+
+.pop-up__refresh{
+    width: 60px;
+    height: 60px;
+    font-size:24px;
+    background-color: wheat;
+    border:2px solid black;
+    border-radius: 50%;
+}
+
+.pop-up__message{
+    display: block;
+    font-size: 38px;
+}
+
+.carrot, .bug{
+    transition: transform 100ms ease-in;
+}
+
+.carrot:hover,.bug:hover{
+    transform: scale(1.1);
+}
