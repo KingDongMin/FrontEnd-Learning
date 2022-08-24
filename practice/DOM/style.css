@@ -1,0 +1,87 @@
+*{
+    margin : 0 auto;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+    color : #333333;
+}
+body{
+    width: 100%;
+}
+a{
+    text-decoration: none;
+}
+
+.APP{
+    width: 400px;
+    height: 600px;
+    background-color: #333333;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.APP__list{
+    width: 100%;
+    height: 80%;
+    overflow-y: auto;
+    background-color: #ffffff;
+}
+.item__row{
+    width: 360px;
+    height: 50px;
+    padding: 10px;
+}
+.item{
+    width: 340px;
+    height: 30px;
+    font-size: 20px;
+    line-height: 30px;
+}
+.item__deleteBtn{
+    float: right;
+    border: none;
+    background-color: transparent;
+    font-size: 25px;
+    cursor: pointer;
+}
+.line{
+    width: 100%;
+    height: 1px;
+    background-color: gray;
+}
+.item__deleteBtn:hover i{
+    color: orange;
+}
+
+.APP__footer{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+}
+.APP__footer input{
+    width: 100%;
+    height: 40px;
+}
+.APP__footer .AddBtn{
+    width: 50px;
+    height: 50px;
+    margin-top: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    border-radius: 50%;
+    border: none;
+    background-color: #ffffff;
+    cursor: pointer;
+    
+}
+.AddBtn:hover{
+    background-color: orange;
+}
+.AddBtn:hover i{
+    color: #ffffff;
+    transition: all 200ms ease-in;
+    transform: scale(1.2);
+}
