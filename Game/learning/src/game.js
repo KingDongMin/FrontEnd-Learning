@@ -7,7 +7,7 @@ export const Reason = Object.freeze({
 })
 
 import * as sound from './sound.js';
-import Field from './field.js';
+import { Field, ItemType } from './field.js';
 
 export class GameBuilder {
 
@@ -94,13 +94,13 @@ class Game {
         if (!this.started) {
             return;
         }
-        if (item === 'carrot') {
+        if (item === ItemType.carrot) {
             this.score++;
             this.__updateScoreBoard();
             if (this.score === this.carrotCount) {
                 this.stop(Reason.win);
             }
-        } else if (item === 'bug') {
+        } else if (item === ItemType.bug) {
             this.stop(Reason.loose);
         }
     }
