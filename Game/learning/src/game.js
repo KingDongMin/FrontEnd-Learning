@@ -56,7 +56,7 @@ class Game {
 
         this.gameBtn.addEventListener('click', () => {
             if (this.started) {
-                this.stop();
+                this.stop(Reason.cancel);
             } else {
                 this.start();
             }
@@ -76,14 +76,12 @@ class Game {
         sound.playBg();
     }
 
-    stop() {
+    stop(reason) {
         this.started = false;
         this.__stopGameTimer();
         this.__hideGameButton();
-
-        this.onClick && this.onClick(Reason.cancel);
-        sound.playAlert();
         sound.stopBg();
+        this.onClick && this.onClick(reason);
     }
 
     __init() {
@@ -100,26 +98,13 @@ class Game {
             this.score++;
             this.__updateScoreBoard();
             if (this.score === this.carrotCount) {
-                this.finishGame(true);
+                this.stop(Reason.win);
             }
         } else if (item === 'bug') {
-            this.finishGame(false);
+            this.stop(Reason.loose);
         }
     }
 
-    finishGame(win) {
-        this.started = false;
-        this.__hideGameButton();
-        if (win) {
-            sound.playWin();
-        } else {
-            sound.playBg;
-        }
-        this.__stopGameTimer();
-        sound.stopBg();
-
-        this.onClick && this.onClick(win ? Reason.win : Reason.loose);
-    }
 
     __showStopButton() {
         const icon = document.querySelector('.fas');
@@ -143,7 +128,7 @@ class Game {
         this.timer = setInterval(() => {
             if (remainingTimeSec <= 0) {
                 clearInterval(this.timer);
-                this.finishGame(this.carrotCount === this.score);
+                this.stop(this.carrotCount === this.score ? Reason.win : Reason.loose);
                 return;
             }
             this.__updateTimerText(--remainingTimeSec);

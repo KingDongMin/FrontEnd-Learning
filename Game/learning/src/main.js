@@ -2,6 +2,7 @@
 
 import PopUp from './popup.js';
 import { GameBuilder, Reason } from './game.js';
+import * as sound from './sound.js';
 
 const gameFinishBanner = new PopUp();
 const game = new GameBuilder()
@@ -17,12 +18,15 @@ game.setGameClickListener((reason) => {
     switch (reason) {
         case Reason.cancel:
             massage = 'REPLAY❓';
+            sound.playAlert();
             break;
         case Reason.win:
             massage = 'YOU WON💥';
+            sound.playWin();
             break;
         case Reason.loose:
             massage = 'YOU LOSE💢';
+            sound.playBug();
             break;
         default:
             throw new Error('not vaild reason');
