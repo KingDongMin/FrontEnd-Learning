@@ -1,9 +1,15 @@
 'use strict';
 
+export const Reason = Object.freeze({
+    win: 'win',
+    loose: 'lost',
+    cancel: 'cancel'
+})
+
 import * as sound from './sound.js';
 import Field from './field.js';
 
-export default class GameBuilder {
+export class GameBuilder {
 
     withGameDuration(gameDuration) {
         this.gameDuration = gameDuration;
@@ -75,8 +81,7 @@ class Game {
         this.__stopGameTimer();
         this.__hideGameButton();
 
-        this.onClick && this.onClick('cancel');
-        //gameFinishBanner.showWithText('REPLAY❓');
+        this.onClick && this.onClick(Reason.cancel);
         sound.playAlert();
         sound.stopBg();
     }
@@ -113,8 +118,7 @@ class Game {
         this.__stopGameTimer();
         sound.stopBg();
 
-        this.onClick && this.onClick(win ? 'win' : 'lost');
-        // gameFinishBanner.showWithText(win ? 'YOU WON💥' : 'YOU LOSE💢');
+        this.onClick && this.onClick(win ? Reason.win : Reason.loose);
     }
 
     __showStopButton() {

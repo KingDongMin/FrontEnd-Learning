@@ -1,7 +1,7 @@
 'use strict';
 
 import PopUp from './popup.js';
-import GameBuilder from './game.js';
+import { GameBuilder, Reason } from './game.js';
 
 const gameFinishBanner = new PopUp();
 const game = new GameBuilder()
@@ -12,17 +12,16 @@ const game = new GameBuilder()
 
 gameFinishBanner.setClickLinstener(game.start);
 
-
 game.setGameClickListener((reason) => {
     let massage;
     switch (reason) {
-        case 'cancel':
+        case Reason.cancel:
             massage = 'REPLAY❓';
             break;
-        case 'win':
+        case Reason.win:
             massage = 'YOU WON💥';
             break;
-        case 'lost':
+        case Reason.loose:
             massage = 'YOU LOSE💢';
             break;
         default:
