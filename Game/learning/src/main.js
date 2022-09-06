@@ -1,16 +1,17 @@
 'use strict';
 
 import PopUp from './popup.js';
-import Game from './game.js';
-
-const CARROT_COUNT = 5;
-const BUG_COUNT = 5;
-const GAME_DURATION_SEC = 5;
+import GameBuilder from './game.js';
 
 const gameFinishBanner = new PopUp();
-const game = new Game(CARROT_COUNT, BUG_COUNT, GAME_DURATION_SEC);
+const game = new GameBuilder()
+    .withGameDuration(5)
+    .withCarrotCount(3)
+    .withBugCount(2)
+    .build();
 
 gameFinishBanner.setClickLinstener(game.start);
+
 
 game.setGameClickListener((reason) => {
     let massage;
